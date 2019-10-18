@@ -8,12 +8,12 @@
 Подсказка: Алгоритм решения с блок-схемой (www.bolshoyvopros.ru). Для вычисления квадратного корня, нужно
 использовать Math.sqrt
 =end
-print "Введите коэффициент А "
-a = (gets.chomp).to_f
-print "Введите коэффициент В "
-b = (gets.chomp).to_f
-print "Введите коэффициент С "
-c= (gets.chomp).to_f
+print 'Введите коэффициент А '
+a = gets.chomp.to_f
+print 'Введите коэффициент В '
+b = gets.chomp.to_f
+print 'Введите коэффициент С '
+c= gets.chomp.to_f
 
 discriminant = (b ** 2) - (4 * a * c)
 

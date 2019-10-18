@@ -5,13 +5,13 @@
 отрицательным, то выводится строка "Ваш вес уже оптимальный"
 =end
 
-print "Введите Ваше имя "
-name = gets.chomp
-print "Введите Ваш рост в см "
-height = gets.chomp
-ideal_weight = height.to_i - 110
+print 'Введите Ваше имя '
+name = gets.chomp.capitalize
+print 'Введите Ваш рост в см '
+height = gets.chomp.to_i
+ideal_weight = height - 110
 if ideal_weight < 0
   puts "Ваш вес, #{name}, уже оптимальный"
 else
-  puts "Ваш идеальный вес, #{name.capitalize}, составляет #{ideal_weight} кг"
+  puts "Ваш идеальный вес, #{name}, составляет #{ideal_weight} кг"
 end
