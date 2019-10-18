@@ -13,19 +13,20 @@ a = gets.chomp.to_f
 print 'Введите коэффициент В '
 b = gets.chomp.to_f
 print 'Введите коэффициент С '
-c= gets.chomp.to_f
+c = gets.chomp.to_f
 
 discriminant = (b ** 2) - (4 * a * c)
-x1 = (-b + Math.sqrt(discriminant) / (2 * a))
-x2 = (-b - Math.sqrt(discriminant) / (2 * a))
 
 if discriminant < 0
   puts "Корней нет"
 elsif discriminant == 0
   puts "Дискриминант = #{discriminant}"
-  puts "Корень уравнения равен #{x1}"
+  x = -b / (2 * a)
+  puts "Корень уравнения равен #{x}"
 elsif discriminant > 0
   puts "Дискриминант = #{discriminant}"
+  x1 = (-b + Math.sqrt(discriminant) / (2 * a))
+  x2 = (-b - Math.sqrt(discriminant) / (2 * a))
   puts "1й Корень уравнения равен #{x1}"
   puts "2й Корень уравнения равен #{x2}"
 end
