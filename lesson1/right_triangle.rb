@@ -7,15 +7,16 @@
 Если все 3 стороны равны, то треугольник равнобедренный и равносторонний, но не прямоугольный.
 =end
 print 'Введите сторону А треугольника '
-a = (gets.chomp).to_f
+a = gets.chomp.to_f
 
 print 'Введите сторону B треугольника '
-b = (gets.chomp).to_f
+b = gets.chomp.to_f
 
 print 'Введите сторону C треугольника '
-c = (gets.chomp).to_f
+c = gets.chomp.to_f
 
-a, b, с = [side_a, side_b, side_c].sort
+
+puts [a, b, c].sort
 
 if (a > b && a > c && a ** 2 == b ** 2 + c ** 2) ||
     (b > a && b > c && b ** 2 == a ** 2 + c ** 2) ||
