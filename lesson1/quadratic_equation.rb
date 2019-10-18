@@ -16,7 +16,6 @@ print 'Введите коэффициент С '
 c = gets.chomp.to_f
 
 discriminant = (b ** 2) - (4 * a * c)
-root_discriminant = Math.sqrt(discriminant)
 
 if discriminant < 0
   puts "Корней нет"
@@ -26,6 +25,7 @@ elsif discriminant == 0
   puts "Корень уравнения равен #{x}"
 elsif discriminant > 0
   puts "Дискриминант = #{discriminant}"
+  root_discriminant = Math.sqrt(discriminant)
   x1 = (-b + root_discriminant) / (2 * a)
   x2 = (-b - root_discriminant) / (2 * a)
   puts "1й Корень уравнения равен #{x1}"

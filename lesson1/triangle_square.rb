@@ -5,10 +5,10 @@
 =end
 
 print 'Введите размер основания '
-base = (gets.chomp).to_f
+base = gets.chomp.to_f
 
 print 'Введите высоту '
-height = (gets.chomp).to_f
+height = gets.chomp.to_f
 
 square_of_triangle = (base * height) / 2
 puts "Площадь треугольника равна #{square_of_triangle}"
