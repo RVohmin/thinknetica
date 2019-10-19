@@ -5,8 +5,7 @@ vowels = ['а', 'е', 'и', 'й', 'о', 'у', 'ы', 'э', 'ю', 'я']
 hash_vowels = {}
 
 alphabet.each_with_index do |letter, index|
-  if vowels.include?(letter)
-    hash_vowels[letter] = index + 1
+    hash_vowels[letter] = index + 1 if vowels.include?(letter)
   end
 end
 

@@ -17,11 +17,11 @@ end
 # считаем цену в корзине
 sum_total = 0
 
-  basket.each do |title, number|
-    puts "В вашей корзине #{number[:num]} товара \"#{title.upcase}\" по цене #{number[:price]}"
-    sum = (number[:price] * number[:num]).round(2)
-    puts "Общая стоимость #{title} составляет #{sum}"
-    sum_total += sum
-  end
+basket.each do |title, number|
+  puts "В вашей корзине #{number[:num]} товара \"#{title.upcase}\" по цене #{number[:price]}"
+  sum = (number[:price] * number[:num]).round(2)
+  puts "Общая стоимость #{title} составляет #{sum}"
+  sum_total += sum
+end
 
 puts "Общая стоимость всех товаров = #{sum_total}"

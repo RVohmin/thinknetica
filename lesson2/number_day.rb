@@ -14,12 +14,6 @@ if (year % 4 == 0 && !(year % 100 == 0)) || year % 400 == 0
   months[1] = 29
 end
 
-sum_days = day
-
-months.each_with_index do |day_in_month, index|
-  if index < month - 1
-    sum_days += day_in_month
-  end
-end
+sum_days = day + months.take(month - 1).sum
 
 puts "#{sum_days}й день с начала #{year} года"
