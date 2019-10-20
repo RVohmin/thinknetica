@@ -11,9 +11,9 @@
 Может перемещаться между станциями, указанными в маршруте. Перемещение возможно вперед и назад, но только на 1 станцию за раз.
 Возвращать предыдущую станцию, текущую, следующую, на основе маршрута
 =end
-class Train < Route
+class Train
 
-  attr_reader :speed, :number_cars
+  attr_reader :speed, :number_cars, :current_station, :next_station, :prev_station
 
   def initialize(number_train = 123, type_train = :freight, number_cars = 18)
     @number_train = number_train
