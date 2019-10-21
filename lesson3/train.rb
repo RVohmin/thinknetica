@@ -40,8 +40,16 @@ class Train
   def get_route(route)
     @route = route
     @current_station = route.start_station
-    @next_station = route.next_station
-    @prev_station = route.prev_station
+  end
+
+  def next_station
+    @next_station = @stations[@current_station.index(@current_station) + 1]
+  end
+
+  def prev_station
+    if @current_station != @start_station
+      @prev_station = @stations[@current_station.index(@current_station) - 1]
+    end
   end
 
   def go_next

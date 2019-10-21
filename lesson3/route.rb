@@ -12,7 +12,7 @@
 =end
 
 class Route
-  attr_reader :start_station, :end_station, :current_station, :prev_station, :next_station, :stations
+  attr_reader :start_station, :end_station, :stations
 
   def initialize (start_station, end_station)
     @start_station = start_station
@@ -23,16 +23,6 @@ class Route
 
   def set_way_station(way_station)
     @stations.insert(-2, way_station)
-  end
-
-  def next_station
-    @next_station = @stations[@current_station.index(@current_station) + 1]
-  end
-
-  def prev_station
-    if @current_station != @start_station
-      @prev_station = @stations[@current_station.index(@current_station) - 1]
-    end
   end
 
   def delete_station(del_station)
