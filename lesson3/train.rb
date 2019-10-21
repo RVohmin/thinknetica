@@ -14,7 +14,7 @@
 class Train
   attr_reader :speed, :number_cars, :current_station, :next_station, :prev_station
 
-  def initialize(number_train = 123, type_train = :freight, number_cars = 18)
+  def initialize(number_train = 123, type_train = :freight, number_cars = 10)
     @number_train = number_train
     @type_train = type_train
     @number_cars = number_cars
@@ -40,23 +40,29 @@ class Train
   def get_route(route)
     @route = route
     @current_station = route.start_station
+    puts "текущая станция #{@current_station}"
   end
 
   def next_station
-    @next_station = @stations[@current_station.index(@current_station) + 1]
+    @next_station = @route.stations[@route.stations.index(@current_station) + 1]
   end
 
   def prev_station
     if @current_station != @start_station
-      @prev_station = @stations[@current_station.index(@current_station) - 1]
+      @prev_station = @route.stations[@route.stations.index(@current_station) - 1]
     end
   end
 
   def go_next
-    @current_station = @next_station if @current_station != @end_station
+    @current_station.send_train(self)
+    @current_station = next_station if @current_station != @route.end_station
+    @current_station.set_train(self)
   end
 
   def go_prev
-    @current_station = @prev_station if @current_station != @start_station
+    @current_station.send_train(self)
+    @current_station = prev_station if @current_station != @route.start_station
+    @current_station.set_train(self)
+
   end
 end

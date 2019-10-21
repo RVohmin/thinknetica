@@ -18,7 +18,6 @@ class Route
     @start_station = start_station
     @end_station = end_station
     @stations = [start_station, end_station]
-    @next_station = end_station
   end
 
   def set_way_station(way_station)
