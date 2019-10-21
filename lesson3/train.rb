@@ -13,7 +13,7 @@
 =end
 class Train
 
-  attr_reader :speed, :number_cars, :current_station, :next_station, :prev_station
+  attr_reader :speed, :number_cars, :current_station, :next_station, :prev_station, :route_list
 
   def initialize(number_train = 123, type_train = :freight, number_cars = 18)
     @number_train = number_train
@@ -40,13 +40,14 @@ class Train
 
   def get_route(route)
     @route = route
+    @route_list = route.route_stations
     @current_station = route.start_station
     @next_station = route.next_station
     @prev_station = route.prev_station
+    @route_list
   end
 
   def go_next
-
     if @current_station != @end_station
       @current_station = @next_station
     end
