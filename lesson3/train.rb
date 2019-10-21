@@ -12,8 +12,7 @@
 Возвращать предыдущую станцию, текущую, следующую, на основе маршрута
 =end
 class Train
-
-  attr_reader :speed, :number_cars, :current_station, :next_station, :prev_station, :route_list
+  attr_reader :speed, :number_cars, :current_station, :next_station, :prev_station
 
   def initialize(number_train = 123, type_train = :freight, number_cars = 18)
     @number_train = number_train
@@ -40,27 +39,16 @@ class Train
 
   def get_route(route)
     @route = route
-    @route_list = route.route_stations
     @current_station = route.start_station
     @next_station = route.next_station
     @prev_station = route.prev_station
-    @route_list
   end
 
   def go_next
-    if @current_station != @end_station
-      @current_station = @next_station
-    end
-    puts "Поезд прибыл на станцию #{@current_station}"
+    @current_station = @next_station if @current_station != @end_station
   end
 
   def go_prev
-    if @current_station != @start_station
-      @current_station = @prev_station
-      puts "Поезд прибыл на станцию #{@current_station}"
-    else
-      puts "Мы на первой станции"
-    end
+    @current_station = @prev_station if @current_station != @start_station
   end
-
 end

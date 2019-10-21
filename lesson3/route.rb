@@ -12,40 +12,30 @@
 =end
 
 class Route
-
-  attr_reader :start_station, :end_station, :current_station, :prev_station, :next_station, :route_stations
+  attr_reader :start_station, :end_station, :current_station, :prev_station, :next_station, :stations
 
   def initialize (start_station, end_station)
     @start_station = start_station
     @end_station = end_station
-    @route_stations = [start_station, end_station]
-    @current_station = start_station
+    @stations = [start_station, end_station]
     @next_station = end_station
   end
 
-  def route_list
-    @route_stations.each { |station| puts station }
-    @route_stations
-  end
-
   def set_way_station(way_station)
-    @route_stations.insert(-2, way_station)
-    puts "Станция добавлена в маршрут, теперь маршрут такой: #{@route_stations}"
+    @stations.insert(-2, way_station)
   end
 
   def next_station
-    @next_station = @route_stations[@current_station.index(@current_station) + 1]
+    @next_station = @stations[@current_station.index(@current_station) + 1]
   end
 
   def prev_station
     if @current_station != @start_station
-      @prev_station = @route_stations[@current_station.index(@current_station) - 1]
+      @prev_station = @stations[@current_station.index(@current_station) - 1]
     end
   end
 
   def delete_station(del_station)
-    @route_stations.delete_if { |name| name == del_station }
-    puts "Станция удалена из маршрута, теперь маршрут такой: #{@route_stations}"
+    @stations.delete_if { |name| name == del_station }
   end
-
 end
