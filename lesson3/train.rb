@@ -21,12 +21,14 @@ class Train
     @speed = 0
   end
 
-  def set_up_train_speed(speed)
+  def up_speed(speed = 70)
     @speed = speed
+    puts @speed
   end
 
-  def set_stop_train
+  def stop
     @speed = 0
+    puts @speed
   end
 
   def set_up_number_cars
@@ -44,25 +46,24 @@ class Train
   end
 
   def next_station
-    @next_station = @route.stations[@route.stations.index(@current_station) + 1]
+    @route.stations[@route.stations.index(@current_station) + 1] if @current_station != @route.end_station
   end
 
   def prev_station
-    if @current_station != @start_station
-      @prev_station = @route.stations[@route.stations.index(@current_station) - 1]
-    end
+      @route.stations[@route.stations.index(@current_station) - 1] if @current_station != @route.start_station
   end
 
   def go_next
     @current_station.send_train(self)
+    up_speed
     @current_station = next_station if @current_station != @route.end_station
     @current_station.set_train(self)
+    stop
   end
 
   def go_prev
     @current_station.send_train(self)
     @current_station = prev_station if @current_station != @route.start_station
     @current_station.set_train(self)
-
   end
 end

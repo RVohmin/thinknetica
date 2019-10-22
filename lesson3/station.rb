@@ -8,10 +8,10 @@
 =end
 
 class Station
-  attr_reader :name_station, :trains
+  attr_reader :name, :trains
 
-  def initialize(name_station)
-    @name_station = name_station
+  def initialize(name)
+    @name = name
     @trains = []
   end
 
