@@ -42,7 +42,6 @@ class Train
   def get_route(route)
     @route = route
     @current_station = route.start_station
-    puts "текущая станция #{@current_station}"
   end
 
   def next_station
@@ -50,20 +49,20 @@ class Train
   end
 
   def prev_station
-      @route.stations[@route.stations.index(@current_station) - 1] if @current_station != @route.start_station
+    @route.stations[@route.stations.index(@current_station) - 1] if @current_station != @route.start_station
   end
 
   def go_next
     @current_station.send_train(self)
     up_speed
-    @current_station = next_station if @current_station != @route.end_station
+    @current_station = next_station if @next_station
     @current_station.set_train(self)
     stop
   end
 
   def go_prev
     @current_station.send_train(self)
-    @current_station = prev_station if @current_station != @route.start_station
+    @current_station = prev_station if prev_station
     @current_station.set_train(self)
   end
 end
