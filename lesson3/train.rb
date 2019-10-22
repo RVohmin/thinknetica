@@ -54,13 +54,15 @@ class Train
     @current_station.send_train(self)
     up_speed
     @current_station = next_station if next_station
-    @current_station.set_train(self)
     stop
+    @current_station.set_train(self)
   end
 
   def go_prev
     @current_station.send_train(self)
+    up_speed
     @current_station = prev_station if prev_station
+    stop
     @current_station.set_train(self)
   end
 end
