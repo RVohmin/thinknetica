@@ -23,12 +23,10 @@ class Train
 
   def up_speed(speed = 70)
     @speed = speed
-    puts @speed
   end
 
   def stop
     @speed = 0
-    puts @speed
   end
 
   def set_up_number_cars
