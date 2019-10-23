@@ -12,11 +12,12 @@
 Возвращать предыдущую станцию, текущую, следующую, на основе маршрута
 =end
 class Train
-  attr_reader :speed, :number_cars, :current_station, :next_station, :prev_station, :type, :number_train
+  attr_reader :speed, :number_cars, :current_station, :next_station, :prev_station, :type, :number_train, :wagons, :route
 
   def initialize(number_train)
     @number_train = number_train
     @speed = 0
+    @wagons = []
   end
 
   def up_speed(speed = 70)
@@ -27,25 +28,27 @@ class Train
     @speed = 0
   end
 
-  def set_up_number_cars
-    @number_cars += 1 if @speed == 0
+  def set_wagon(wagon)
+    @wagons << wagon if @speed == 0
   end
 
-  def set_down_number_cars
-    @number_cars -= 1 if @speed == 0
+  def remove_wagon
+    @wagons.delete(-1) if @speed == 0 && !wagons.empty?
   end
 
   def get_route(route)
     @route = route
     @current_station = route.start_station
+    @current_station_index = 0
+    @current_station.set_train(self)
   end
 
   def next_station
-    @route.stations[@route.stations.index(@current_station) + 1] if @current_station != @route.end_station
+    @route.stations_list[@current_station_index + 1] if @current_station != @route.end_station
   end
 
   def prev_station
-    @route.stations[@route.stations.index(@current_station) - 1] if @current_station != @route.start_station
+    @route.stations_list[@current_station_index - 1] if @current_station != @route.start_station
   end
 
   def go_next
@@ -54,6 +57,7 @@ class Train
     @current_station = next_station if next_station
     stop
     @current_station.set_train(self)
+    @current_station_index += 1
   end
 
   def go_prev
@@ -62,5 +66,6 @@ class Train
     @current_station = prev_station if prev_station
     stop
     @current_station.set_train(self)
+    @current_station_index -= 1
   end
 end
