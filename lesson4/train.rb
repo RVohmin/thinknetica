@@ -12,12 +12,10 @@
 Возвращать предыдущую станцию, текущую, следующую, на основе маршрута
 =end
 class Train
-  attr_reader :speed, :number_cars, :current_station, :next_station, :prev_station
+  attr_reader :speed, :number_cars, :current_station, :next_station, :prev_station, :type, :number_train
 
-  def initialize(number_train, type_train = :cargo, number_cars)
+  def initialize(number_train)
     @number_train = number_train
-    @type_train = type_train
-    @number_cars = number_cars
     @speed = 0
   end
 
