@@ -72,6 +72,7 @@ class Main
     end
   end
 
+  private
 
   def create_station
     loop do
@@ -235,8 +236,6 @@ class Main
       route_exist?(name).delete_station(station)
     end
   end
-
-  private
 
   def select_train(number_train)
     @trains.each do |item|
