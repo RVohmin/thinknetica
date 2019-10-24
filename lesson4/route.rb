@@ -21,8 +21,6 @@ class Route
     @name = name
   end
 
-  protected
-
   def set_way_station(way_station)
     @stations_list.insert(-2, way_station)
   end
