@@ -15,11 +15,10 @@ class Station
     @trains_list = []
   end
 
-  protected
-
   def set_train(train)
     @trains_list << train
   end
+  protected
 
   def get_type_trains(type)
     @trains_list.select { |train| train.type == type }

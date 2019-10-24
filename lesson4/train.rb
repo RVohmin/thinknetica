@@ -20,7 +20,12 @@ class Train
     @wagons = []
   end
 
-  protected
+  def get_route(route)
+    @route = route
+    @current_station = route.start_station
+    @current_station_index = 0
+    @current_station.set_train(self)
+  end
 
   def set_wagon(wagon)
     @wagons << wagon if @speed == 0
@@ -28,13 +33,6 @@ class Train
 
   def remove_wagon
     @wagons.delete(-1) if @speed == 0 && !wagons.empty?
-  end
-
-  def get_route(route)
-    @route = route
-    @current_station = route.start_station
-    @current_station_index = 0
-    @current_station.set_train(self)
   end
 
   def next_station
