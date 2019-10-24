@@ -15,6 +15,8 @@ class Station
     @trains_list = []
   end
 
+  protected
+
   def set_train(train)
     @trains_list << train
   end

@@ -88,15 +88,6 @@ class Main
     end
   end
 
-  def exist_station?(name)
-    @stations.each do |item|
-      if item.name == name
-        return item
-      end
-    end
-    return false
-  end
-
   def create_train
     print 'Введите номер поезда '
     number = gets.chomp.to_i
@@ -149,25 +140,6 @@ class Main
     puts route.name
     puts route
     sleep 1
-  end
-
-  def select_train(number_train)
-    @trains.each do |item|
-      if item.number_train == number_train
-        return item
-      end
-    end
-    return false
-  end
-
-  def select_route(name)
-    @routes.each do |item|
-      if item.name == name
-        return item
-        puts item
-      end
-    end
-    return false
   end
 
   def add_wagon
@@ -254,15 +226,6 @@ class Main
     end
   end
 
-  def route_exist?(name)
-    @routes.each do |item|
-      if item.name == name
-        return item
-      end
-    end
-    puts 'Нет такого маршрута'
-  end
-
   def del_station
     print "Введите имя маршрута,из которого удалить станцию "
     name = gets.chomp
@@ -272,6 +235,46 @@ class Main
       route_exist?(name).delete_station(station)
     end
   end
+
+  private
+
+  def select_train(number_train)
+    @trains.each do |item|
+      if item.number_train == number_train
+        return item
+      end
+    end
+    return false
+  end
+
+  def select_route(name)
+    @routes.each do |item|
+      if item.name == name
+        return item
+        puts item
+      end
+    end
+    return false
+  end
+
+  def route_exist?(name)
+    @routes.each do |item|
+      if item.name == name
+        return item
+      end
+    end
+    puts 'Нет такого маршрута'
+  end
+
+  def exist_station?(name)
+    @stations.each do |item|
+      if item.name == name
+        return item
+      end
+    end
+    return false
+  end
+
 end
 main = Main.new
 main.run

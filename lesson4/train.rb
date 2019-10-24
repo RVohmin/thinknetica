@@ -20,13 +20,7 @@ class Train
     @wagons = []
   end
 
-  def up_speed(speed = 70)
-    @speed = speed
-  end
-
-  def stop
-    @speed = 0
-  end
+  protected
 
   def set_wagon(wagon)
     @wagons << wagon if @speed == 0
@@ -68,4 +62,15 @@ class Train
     @current_station.set_train(self)
     @current_station_index -= 1
   end
+
+  private
+
+  def up_speed(speed = 70)
+    @speed = speed
+  end
+
+  def stop
+    @speed = 0
+  end
+
 end
